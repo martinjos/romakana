@@ -1,7 +1,24 @@
-self.port.on('katakana', function(katakana) {
+katakanaReceived = function(katakanaStr) {
 
-var romaji = katakana.romaji;
-var small = katakana.small;
+var hepburn = {
+    si:'shi', zi:'ji', ti:'chi', di:'ji', tu:'tsu', du:'zu', hu:'fu',
+};
+
+var romaji = {};
+var small = {};
+var lines = katakanaStr.split("\n");
+for (var i in lines) {
+    var line = lines[i];
+    var pieces = line.split(/[ \t]+/);
+    if (pieces.length < 2)
+        continue;
+    var ch = String.fromCharCode(parseInt(pieces[0], 16));
+    var name = pieces[pieces.length - 1].toLowerCase();
+    small[ch] = pieces[pieces.length - 2] == 'SMALL';
+    if (hepburn[name] !== undefined)
+        name = hepburn[name];
+    romaji[ch] = name;
+}
 
 var html = document.body.innerHTML;
 
@@ -115,4 +132,33 @@ if (found) {
     document.body.innerHTML = result;
 }
 
-}); // self.port.on('katakana', ...)
+}; // katakanaReceived = function (katakana) { ...
+
+function request(url, func) {
+    var xhr = new XMLHttpRequest();
+    try {
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState != 4) {
+                return;
+            }
+
+            if (xhr.responseText) {
+                func(xhr.responseText);
+            }
+        };
+
+        xhr.onerror = function(error) {
+            console.error(error);
+        };
+
+        xhr.open("GET", url, true);
+        xhr.send(null);
+    } catch(e) {
+        console.error(e);
+    }
+}
+
+if (self.port)
+    self.port.on('katakana', katakanaReceived);
+else
+    request(chrome.extension.getURL('data/Katakana.txt'), katakanaReceived);

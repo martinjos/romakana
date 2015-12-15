@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "Katakana 2 Romaji",
+  "description": "Converts Japanese katakana into rōmaji.",
+  "version": "1.0.0",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["data/xregexp-all.js",
+             "data/modify-page.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "data/Katakana.txt"
+  ]
+}

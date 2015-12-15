@@ -1,7 +1,7 @@
 {
-  "title": "Romakana",
-  "name": "romakana",
-  "version": "0.0.1",
+  "title": "Katakana 2 Romaji",
+  "name": "katakana2romaji",
+  "version": "1.0.0",
   "description": "Converts Japanese katakana into rōmaji.",
   "main": "index.js",
   "author": "Martin Sidaway",
