@@ -7,6 +7,13 @@ var html = document.body.innerHTML;
 
 var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
 var regexp = XRegExp('['+kata+'] ['+kata+'\u30FC]*', 'gx');
+var shichiji = { shi: true, chi: true, ji: true };
+
+var consonantMoras = {};
+var consonantMorasArray = ['fu', 'vu', 'te', 'to', 'de', 'do', 'ho', 'tsu', 'su', 'zu', 'shi', 'chi', 'ji'];
+for (var i in consonantMorasArray)
+    consonantMoras[ consonantMorasArray[i] ] = true;
+
 var pos = 0;
 var result = "";
 var found = false;
@@ -36,22 +43,41 @@ while ((matches = regexp.exec(html)) !== null) {
     var r = "";
     var chars = k.split('');
     var geminate = false;
+    var lastMora = undefined;
     for (var i in chars) {
         var ch = chars[i];
-        if (romaji[ch] == 'tsu' && small[ch])
+        var mora = romaji[ch];
+        if (mora == 'tsu' && small[ch]) {
             geminate = true;
-        else if (romaji[ch] !== undefined) {
+            lastMora = undefined;
+        } else if (mora !== undefined) {
             if (geminate) {
-                if (romaji[ch].substr(0, 2) == 'ch') {
+                if (mora.substr(0, 2) == 'ch') {
                     r += "t";
                 } else {
-                    r += romaji[ch].charAt(0);
+                    r += mora[0];
+                }
+            } else if (small[ch]) {
+                var lastChar = r[r.length - 1];
+                if (shichiji[lastMora] && mora[0] == 'y') {
+                    r = r.substr(0, r.length - 1);
+                    mora = mora.substr(1);
+                } else if (consonantMoras[lastMora] ||
+                           (lastChar == 'u' && mora[0] == 'w') ||
+                           (lastChar == 'i' && mora[0] == 'y')) {
+                    r = r.substr(0, r.length - 1);
+                } else if (lastChar == 'u') {
+                    r = r.substr(0, r.length - 1) + 'w';
+                } else if (lastChar == 'i') {
+                    r = r.substr(0, r.length - 1) + 'y';
                 }
             }
-            r += romaji[ch];
+            r += mora;
             geminate = false;
+            lastMora = mora;
         } else {
             geminate = false;
+            lastMora = undefined;
             if (ch == '\u30FB' || ch == '\uFF65')
                 r += ' ';
             else if (i > 0 && (ch == '\u30FC' || ch == '\uFF70'))
