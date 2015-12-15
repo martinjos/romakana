@@ -3,6 +3,10 @@ var pageMod = require('sdk/page-mod');
 
 var katakanaStr = self.data.load('Katakana.txt');
 
+var hepburn = {
+  si:'shi', zi:'ji', ti:'chi', di:'ji', tu:'tsu', du:'zu', hu:'fu',
+};
+
 var katakana = {};
 var lines = katakanaStr.split("\n");
 for (var i in lines) {
@@ -12,6 +16,8 @@ for (var i in lines) {
     break;
   var ch = String.fromCharCode(parseInt(pieces[0], 16));
   var name = pieces[pieces.length - 1].toLowerCase();
+  if (hepburn[name] !== undefined)
+    name = hepburn[name];
   katakana[ch] = name;
 }
 
