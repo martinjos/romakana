@@ -13,7 +13,7 @@ for (var i in lines) {
   var line = lines[i];
   var pieces = line.split(/[ \t]+/);
   if (pieces.length < 2)
-    break;
+    continue;
   var ch = String.fromCharCode(parseInt(pieces[0], 16));
   var name = pieces[pieces.length - 1].toLowerCase();
   if (hepburn[name] !== undefined)

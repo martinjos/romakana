@@ -9,7 +9,6 @@ var found = false;
 var matches;
 var inTag = false;
 
-var i = 0;
 while ((matches = regexp.exec(html)) !== null) {
     var intermediate = html.substr(pos, matches.index - pos);
     result += intermediate;
@@ -42,9 +41,6 @@ while ((matches = regexp.exec(html)) !== null) {
     r = r.normalize();
     r = '<span title="'+ k +'">' + r + '</span>';
     result += r;
-
-    i += 1;
-    //if (i == 10) break;
 }
 
 result += html.substr(pos);
