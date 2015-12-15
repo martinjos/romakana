@@ -7,14 +7,29 @@ var pos = 0;
 var result = "";
 var found = false;
 var matches;
+var inTag = false;
 
 var i = 0;
 while ((matches = regexp.exec(html)) !== null) {
-    result += html.substr(pos, matches.index - pos);
+    var intermediate = html.substr(pos, matches.index - pos);
+    result += intermediate;
     pos = regexp.lastIndex;
-    found = true;
-
     k = matches[0];
+
+    var oti = intermediate.lastIndexOf('<');
+    var cti = intermediate.lastIndexOf('>');
+    if (oti < cti) {
+        inTag = false;
+    } else if (cti < oti) {
+        inTag = true;
+    }
+
+    if (inTag) {
+        result += k;
+        continue;
+    }
+
+    found = true;
     var r = "";
     var chars = k.split('');
     for (var i in chars) {
@@ -24,7 +39,9 @@ while ((matches = regexp.exec(html)) !== null) {
         else if (ch == '\u30FC')
             r += '\u0304';
     }
-    result += r.normalize();
+    r = r.normalize();
+    r = '<span title="'+ k +'">' + r + '</span>';
+    result += r;
 
     i += 1;
     //if (i == 10) break;
