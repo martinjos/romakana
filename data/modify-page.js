@@ -2,7 +2,7 @@ self.port.on('katakana', function(katakana) {
 
 var html = document.body.innerHTML;
 
-var regexp = XRegExp('\\p{Katakana} (?: \\p{Katakana} | \u30FC )*', 'gx');
+var regexp = XRegExp('[\\p{Katakana}\u30FB] [\\p{Katakana}\u30FB\u30FC]*', 'gx');
 var pos = 0;
 var result = "";
 var found = false;
@@ -35,11 +35,14 @@ while ((matches = regexp.exec(html)) !== null) {
         var ch = chars[i];
         if (katakana[ch] !== undefined)
             r += katakana[ch];
+        else if (ch == '\u30FB')
+            r += ' ';
         else if (ch == '\u30FC')
             r += '\u0304';
     }
     r = r.normalize();
     r = '<span title="'+ k +'">' + r + '</span>';
+    r = ' ' + r + ' ';
     result += r;
 }
 
