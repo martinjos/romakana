@@ -21,8 +21,10 @@ while ((matches = regexp.exec(html)) !== null) {
         var ch = chars[i];
         if (katakana[ch] !== undefined)
             r += katakana[ch];
+        else if (ch == '\u30FC')
+            r += '\u0304';
     }
-    result += r;
+    result += r.normalize();
 
     i += 1;
     //if (i == 10) break;
