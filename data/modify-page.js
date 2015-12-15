@@ -23,7 +23,7 @@ for (var i in lines) {
 var html = document.body.innerHTML;
 
 var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
-var regexp = XRegExp('['+kata+'] ['+kata+'\u30FC\u309A]*', 'gx');
+var regexp = new RegExp('['+kata+']['+kata+'\u30FC\u309A]*', 'g');
 var shichiji = { shi: true, chi: true, ji: true };
 
 var consonantMoras = {};

@@ -5,8 +5,7 @@ var katakanaStr = self.data.load('Katakana.txt');
 
 pageMod.PageMod({
   include: "*",
-  contentScriptFile: [self.data.url('xregexp-all.js'),
-                      self.data.url('modify-page.js')],
+  contentScriptFile: [self.data.url('modify-page.js')],
   onAttach: function (worker) {
     worker.port.emit("katakana", katakanaStr);
   },
