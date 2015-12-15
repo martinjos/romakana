@@ -1,7 +1,9 @@
-BUILD_CHROME=build_chrome/katakana2romaji
+NAME=katakana2romaji
+
+BUILD_CHROME=build_chrome/$(NAME)
 BUILD_FIREFOX=build_firefox
 
-all: firefox chrome-prepare
+all: firefox chrome
 
 firefox:
 	rm -rf $(BUILD_FIREFOX)
@@ -9,7 +11,8 @@ firefox:
 	cp -a package.json index.js data $(BUILD_FIREFOX)
 	( cd $(BUILD_FIREFOX) && jpm xpi )
 
-chrome-prepare:
+chrome:
 	rm -rf $(BUILD_CHROME)
 	mkdir -p $(BUILD_CHROME)
 	cp -a manifest.json data _locales $(BUILD_CHROME)
+	( cd $(BUILD_CHROME)/.. && zip $(NAME).zip -r $(NAME) )
