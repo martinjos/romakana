@@ -7,7 +7,8 @@ var hepburn = {
   si:'shi', zi:'ji', ti:'chi', di:'ji', tu:'tsu', du:'zu', hu:'fu',
 };
 
-var katakana = {};
+var romaji = {};
+var small = {};
 var lines = katakanaStr.split("\n");
 for (var i in lines) {
   var line = lines[i];
@@ -16,9 +17,10 @@ for (var i in lines) {
     continue;
   var ch = String.fromCharCode(parseInt(pieces[0], 16));
   var name = pieces[pieces.length - 1].toLowerCase();
+  small[ch] = pieces[pieces.length - 2] == 'SMALL';
   if (hepburn[name] !== undefined)
     name = hepburn[name];
-  katakana[ch] = name;
+  romaji[ch] = name;
 }
 
 pageMod.PageMod({
@@ -26,6 +28,6 @@ pageMod.PageMod({
   contentScriptFile: [self.data.url('xregexp-all.js'),
                       self.data.url('modify-page.js')],
   onAttach: function (worker) {
-    worker.port.emit("katakana", katakana);
+    worker.port.emit("katakana", { romaji: romaji, small: small });
   },
 });

@@ -1,5 +1,8 @@
 self.port.on('katakana', function(katakana) {
 
+var romaji = katakana.romaji;
+var small = katakana.small;
+
 var html = document.body.innerHTML;
 
 var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
@@ -32,16 +35,30 @@ while ((matches = regexp.exec(html)) !== null) {
     found = true;
     var r = "";
     var chars = k.split('');
+    var geminate = false;
     for (var i in chars) {
         var ch = chars[i];
-        if (katakana[ch] !== undefined)
-            r += katakana[ch];
-        else if (ch == '\u30FB' || ch == '\uFF65')
-            r += ' ';
-        else if (i > 0 && (ch == '\u30FC' || ch == '\uFF70'))
-            r += '\u0304';
-        else
-            r += ch;
+        if (romaji[ch] == 'tsu' && small[ch])
+            geminate = true;
+        else if (romaji[ch] !== undefined) {
+            if (geminate) {
+                if (romaji[ch].substr(0, 2) == 'ch') {
+                    r += "t";
+                } else {
+                    r += romaji[ch].charAt(0);
+                }
+            }
+            r += romaji[ch];
+            geminate = false;
+        } else {
+            geminate = false;
+            if (ch == '\u30FB' || ch == '\uFF65')
+                r += ' ';
+            else if (i > 0 && (ch == '\u30FC' || ch == '\uFF70'))
+                r += '\u0304';
+            else
+                r += ch;
+        }
     }
     r = r.normalize();
     r = '<span title="'+ k +'">' + r + '</span>';
