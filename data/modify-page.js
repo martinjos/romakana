@@ -2,7 +2,8 @@ self.port.on('katakana', function(katakana) {
 
 var html = document.body.innerHTML;
 
-var regexp = XRegExp('[\\p{Katakana}\u30FB] [\\p{Katakana}\u30FB\u30FC]*', 'gx');
+var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
+var regexp = XRegExp('['+kata+'] ['+kata+'\u30FC]*', 'gx');
 var pos = 0;
 var result = "";
 var found = false;
@@ -35,10 +36,12 @@ while ((matches = regexp.exec(html)) !== null) {
         var ch = chars[i];
         if (katakana[ch] !== undefined)
             r += katakana[ch];
-        else if (ch == '\u30FB')
+        else if (ch == '\u30FB' || ch == '\uFF65')
             r += ' ';
-        else if (ch == '\u30FC')
+        else if (i > 0 && (ch == '\u30FC' || ch == '\uFF70'))
             r += '\u0304';
+        else
+            r += ch;
     }
     r = r.normalize();
     r = '<span title="'+ k +'">' + r + '</span>';
