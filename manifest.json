@@ -1,9 +1,11 @@
 {
   "manifest_version": 2,
 
-  "name": "Katakana 2 Romaji",
-  "description": "Converts Japanese katakana into rōmaji.",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
   "version": "1.0.0",
+
+  "default_locale": "en",
 
   "content_scripts": [
     {

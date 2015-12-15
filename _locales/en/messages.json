@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "Katakana 2 Romaji",
+        "description": "App name"
+    },
+    "appDesc": {
+        "message": "Converts Japanese katakana into rōmaji.",
+        "description": "App title"
+    }
+}

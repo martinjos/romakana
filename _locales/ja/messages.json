@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "カタカナromaji",
+        "description": "App name"
+    },
+    "appDesc": {
+        "message": "カタカナからローマ字へ変換します。",
+        "description": "App description"
+    }
+}
