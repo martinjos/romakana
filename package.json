@@ -1,9 +1,9 @@
 {
-  "title": "Katakana 2 Romaji",
+  "title": "Katakana 2 Romaji / カタカナからローマ字",
   "name": "katakana2romaji",
   "version": "1.0.0",
   "icon": "resource://katakana2romaji/icons/icon-48.png",
-  "description": "Converts Japanese katakana into rōmaji.",
+  "description": "Converts Japanese katakana into rōmaji. / カタカナからローマ字へ変換します。",
   "main": "index.js",
   "author": "Martin Sidaway",
   "engines": {
