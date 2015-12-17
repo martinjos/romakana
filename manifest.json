@@ -8,8 +8,8 @@
   "default_locale": "en",
 
   "icons": {
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
+    "48": "data/icons/icon-48.png",
+    "128": "data/icons/icon-128.png"
   },
 
   "content_scripts": [

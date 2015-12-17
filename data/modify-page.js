@@ -47,6 +47,9 @@ katakanaReceived = function(katakanaStr) {
         document.body.innerHTML = result;
     }
 
+    if (self.port)
+        self.port.emit('finished', found);
+
 }; // katakanaReceived = function (katakana) { ...
 
 function request(url, func) {

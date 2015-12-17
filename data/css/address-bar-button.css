@@ -1,0 +1,14 @@
+
+#katakana-button {
+    list-style-image: url('../images/address-bar-button.png');
+    -moz-image-region: rect(0, 14px, 14px, 0);
+}
+
+#katakana-button:hover {
+    -moz-image-region: rect(14px, 14px, 28px, 0);
+}
+
+#katakana-button:hover:active {
+    -moz-image-region: rect(28px, 14px, 42px, 0);
+}
+
