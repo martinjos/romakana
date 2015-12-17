@@ -72,6 +72,8 @@ K2RConverter.prototype.convert = function(k) {
                     r = r.substr(0, r.length - 1) + 'w';
                 } else if (lastChar == 'i') {
                     r = r.substr(0, r.length - 1) + 'y';
+                } else {
+                    r = r.substr(0, r.length - 1);
                 }
             }
             r += mora;

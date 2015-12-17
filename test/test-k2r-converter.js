@@ -147,6 +147,10 @@ var k2rTestTable = {
     'ｶｰ': 'kā',
     'ｶ･ｶ': 'ka ka',
 
+    // My extensions
+
+    'セィ': 'si',
+
 };
 
 exports["test convert"] = function(assert) {
