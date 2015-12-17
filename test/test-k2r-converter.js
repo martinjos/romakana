@@ -117,6 +117,36 @@ var k2rTestTable = {
     'ヴィェ': 'vye',
     'ヴョ': 'vyo',
 
+    // Ainu
+
+    'ㇰ': 'k',
+    'ㇱ': 'sh',
+    'ㇲ': 's',
+    'ㇳ': 't',
+    'ㇴ': 'n',
+    'ㇵ': 'h',
+    'ㇶ': 'h',
+    'ㇷ': 'f',
+    'ㇷ゚': 'p',
+    'ㇸ': 'h',
+    'ㇹ': 'h',
+    'ㇺ': 'm',
+    'ㇻ': 'r',
+    'ㇼ': 'r',
+    'ㇽ': 'r',
+    'ㇾ': 'r',
+    'ㇿ': 'r',
+
+    // Other symbols
+
+    'ヶ': 'ヶ', // Kanji abbreviation
+    '㋐': '㋐',
+    'カー': 'kā',
+    'カ・カ': 'ka ka',
+    'ｶ': 'ka',
+    'ｶｰ': 'kā',
+    'ｶ･ｶ': 'ka ka',
+
 };
 
 exports["test convert"] = function(assert) {
