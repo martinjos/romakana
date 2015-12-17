@@ -4,6 +4,8 @@ BUILD_CHROME=build_chrome/$(NAME)
 BUILD_FIREFOX=build_firefox
 CHROME_ZIPFILE=$(BUILD_CHROME)/../$(NAME).zip
 
+FIREFOX_BIN=/usr/lib/firefox/firefox
+
 all: firefox chrome
 
 firefox:
@@ -18,3 +20,8 @@ chrome:
 	mkdir -p $(BUILD_CHROME)
 	cp -a manifest.json data _locales $(BUILD_CHROME)
 	( cd $(BUILD_CHROME)/.. && zip $(NAME).zip -r $(NAME) )
+
+test:
+	jpm test -b $(FIREFOX_BIN)
+
+.PHONY: all firefox chrome test
