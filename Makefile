@@ -11,14 +11,14 @@ all: firefox chrome
 firefox:
 	rm -rf $(BUILD_FIREFOX)
 	mkdir -p $(BUILD_FIREFOX)
-	cp -a package.json index.js data $(BUILD_FIREFOX)
+	cp -a package.json index.js data icons $(BUILD_FIREFOX)
 	( cd $(BUILD_FIREFOX) && jpm xpi )
 
 chrome:
 	rm -f $(CHROME_ZIPFILE)
 	rm -rf $(BUILD_CHROME)
 	mkdir -p $(BUILD_CHROME)
-	cp -a manifest.json data _locales $(BUILD_CHROME)
+	cp -a manifest.json data _locales icons $(BUILD_CHROME)
 	( cd $(BUILD_CHROME)/.. && zip $(NAME).zip -r $(NAME) )
 
 test:

@@ -2,6 +2,7 @@
   "title": "Katakana 2 Romaji",
   "name": "katakana2romaji",
   "version": "1.0.0",
+  "icon": "resource://katakana2romaji/icons/icon-48.png",
   "description": "Converts Japanese katakana into rōmaji.",
   "main": "index.js",
   "author": "Martin Sidaway",
