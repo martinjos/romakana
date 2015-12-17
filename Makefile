@@ -2,6 +2,7 @@ NAME=katakana2romaji
 
 BUILD_CHROME=build_chrome/$(NAME)
 BUILD_FIREFOX=build_firefox
+CHROME_ZIPFILE=$(BUILD_CHROME)/../$(NAME).zip
 
 all: firefox chrome
 
@@ -12,6 +13,7 @@ firefox:
 	( cd $(BUILD_FIREFOX) && jpm xpi )
 
 chrome:
+	rm -f $(CHROME_ZIPFILE)
 	rm -rf $(BUILD_CHROME)
 	mkdir -p $(BUILD_CHROME)
 	cp -a manifest.json data _locales $(BUILD_CHROME)
