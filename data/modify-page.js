@@ -1,51 +1,75 @@
-katakanaReceived = function(katakanaStr) {
+function filterAllTextNodes(elem, filter, doc) {
+    var child = elem.firstChild;
+    var found = false;
+    while (child) {
+        if (child.nodeType == 3) { // text
+            var array = filter(doc, child);
+            if (array.length != 1 || array[0] != child) {
+                found = true;
+                var nextChild = child.nextSibling;
+                elem.removeChild(child);
+                for (var i in array) {
+                    elem.insertBefore(array[i], nextChild);
+                }
+                child = array[array.length - 1];
+            }
+        } else if (child.nodeType == 1) { // element
+            found = found | filterAllTextNodes(child, filter, doc);
+        }
+        child = child.nextSibling;
+    }
+    return found;
+}
 
-    var converter = new K2RConverter(katakanaStr);
+var converter = null;
 
-    var html = document.body.innerHTML;
+var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
+var regexp = new RegExp('['+kata+']['+kata+'\u30FC\u309A]*', 'g');
 
-    var kata = '\u30A1-\u30F5\u30F7-\u30FB\u31F0-\u31FF\uFF65-\uFF9D';
-    var regexp = new RegExp('['+kata+']['+kata+'\u30FC\u309A]*', 'g');
+function convertKatakanaFilter(doc, child) {
+    var text = child.data;
 
     var pos = 0;
-    var result = "";
+    var result = [];
     var found = false;
     var matches;
-    var inTag = false;
 
-    while ((matches = regexp.exec(html)) !== null) {
-        var intermediate = html.substr(pos, matches.index - pos);
-        result += intermediate;
+    while ((matches = regexp.exec(text)) !== null) {
+        var intermediate = text.substr(pos, matches.index - pos);
+        if (intermediate.length > 0) {
+            result.push(document.createTextNode(intermediate));
+        }
         pos = regexp.lastIndex;
         k = matches[0];
 
-        var oti = intermediate.lastIndexOf('<');
-        var cti = intermediate.lastIndexOf('>');
-        if (oti < cti) {
-            inTag = false;
-        } else if (cti < oti) {
-            inTag = true;
-        }
-
-        if (inTag) {
-            result += k;
-            continue;
-        }
-
-        found = true;
-
         r = converter.convert(k);
 
-        r = '<span title="'+ k +'">' + r + '</span>';
-        r = ' ' + r + ' ';
-        result += r;
+        result.push(document.createTextNode(' '));
+        span = document.createElement('span');
+        span.setAttribute('title', k);
+        span.appendChild(document.createTextNode(r));
+        result.push(span);
+        result.push(document.createTextNode(' '));
     }
 
-    result += html.substr(pos);
-
-    if (found) {
-        document.body.innerHTML = result;
+    if (pos == 0) {
+        result.push(child);
+    } else if (pos < text.length) {
+        result.push(document.createTextNode(text.substr(pos)));
     }
+
+    return result;
+}
+
+katakanaReceived = function(katakanaStr) {
+
+    if (!document.body)
+        return;
+
+    converter = new K2RConverter(katakanaStr);
+    var found = filterAllTextNodes(document.body,
+                                   convertKatakanaFilter,
+                                   document);
 
 }; // katakanaReceived = function (katakana) { ...
 
