@@ -1,4 +1,11 @@
-function filterTextNodes(elem, filter, doc) {
+var defaultExcludeTags = {
+    style: true, script: true, iframe: true, textarea: true,
+    select: true, option: true
+};
+
+function filterTextNodes(elem, filter, doc, excludeTags) {
+    if (excludeTags === undefined)
+        excludeTags = defaultExcludeTags;
     var child = elem.firstChild;
     var found = false;
     while (child) {
@@ -14,7 +21,8 @@ function filterTextNodes(elem, filter, doc) {
                 child = array[array.length - 1];
             }
         } else if (child.nodeType == 1) { // element
-            found = found | filterTextNodes(child, filter, doc);
+            if ( !excludeTags[ child.tagName.toLowerCase() ] )
+                found = found | filterTextNodes(child, filter, doc);
         }
         child = child.nextSibling;
     }
