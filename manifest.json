@@ -17,6 +17,8 @@
       "matches": ["<all_urls>"],
       "js": [
         "data/k2r-converter.js",
+        "data/filter.js",
+        "data/filter-katakana.js",
         "data/modify-page.js"
       ]
     }
