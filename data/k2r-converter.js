@@ -102,7 +102,9 @@ K2RConverter.prototype.convert = function(k) {
             lastMora = undefined;
         }
     }
-    r = r.normalize();
+    // Firefox mobile does not have String#normalize()
+    if (typeof(r.normalize) != 'undefined')
+        r = r.normalize();
     return r;
 };
 
