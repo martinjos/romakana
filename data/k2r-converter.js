@@ -33,10 +33,12 @@ for (var i in consonantMorasArray)
 // transcription of foreign sounds. As such, Ainu is not fully supported
 // (sorry).
 
-K2RConverter.prototype.ainuConsonants = {};
-var ainuConsonantsArray = ['k', 'sh', 's', 't', 'n', 'h', 'f', 'm', 'r'];
-for (var i in ainuConsonantsArray)
-    K2RConverter.prototype.ainuConsonants[ ainuConsonantsArray[i] ] = true;
+// The second of each pair is the combining dakuten form.
+
+K2RConverter.prototype.ainuConsonants = {
+    'k': 'g', 'sh': 'j', 's': 'z', 't': 'd', 'n': 'ng', 'h': 'b',
+    'f': 'b',  'm': 'm', 'r': 'l'
+};
 
 K2RConverter.prototype.convert = function(k) {
     var r = "";
@@ -88,6 +90,12 @@ K2RConverter.prototype.convert = function(k) {
             else if (i > 0 && ch == '\u309A' && lastMora == 'f') {
                 // combining semi-voiced sound mark - convert f to p
                 r = r.substr(0, r.length - 1) + 'p';
+            } else if (i > 0 && ch == '\u3099' &&
+                       (this.ainuConsonants[lastMora] || lastMora == 'n')) {
+                // combining voiced sound mark - convert isolated (Ainu)
+                // consonant to voiced
+                r = r.substr(0, r.length - lastMora.length) +
+                    this.ainuConsonants[lastMora];
             } else
                 r += ch;
             geminate = false;
