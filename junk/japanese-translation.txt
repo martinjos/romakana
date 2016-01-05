@@ -1,0 +1,82 @@
+ローマ字にカタカナを変換します。
+
+ローマ字へ (into romaji)
+
+カタカナから (from katakana)
+
+変換します。 (converts)
+
+カタカナからローマ字へ変換します。
+
+あなたが訪問のウェブページのすべての
+
+あなたが訪問 (you visit)
+
+は (topic)
+
+が (subject)
+
+を (object)
+
+すべて (all)
+すべての
+
+ウェブページ (web page)
+
+の ('s)
+
+このブラウザ拡張機能 (this browser extension)
+
+すべてカタカナがからローマ字へ変換します。
+
+この (this)
+
+あなたが訪問するすべてのウェブページ (all of the web pages you visit)
+
+このブラウザ拡張機能があなたが訪問するすべてのウェブページのカタカナをカタカナからローマ字へ変換します。
+
+1. このブラウザ拡張機能はあなたが訪問するすべてのウェブページのカタカナをローマ字へ変換します。
+
+マウスポインタをホバリング (hovering the mouse pointer)
+
+生成されたローマ字の上にマウスポインタをホバリング (hovering the mouse pointer over the generated romaji)
+
+元のカタカナが表示されます (you will see the original katakana)
+
+2. 生成されたローマ字の上にマウスポインタをホバリング、元のカタカナが表示されます。
+
+ローマ字表記 (romanization)
+
+ヘボン式  (Hepburn)
+
+修正ヘボン式 (revised/modified Hepburn)
+
+に似ています (is similar to)
+
+ローマ字表記は、修正ヘボン式に似ています (Romanization is similar to the modified Hepburn system)
+
+拡張カタカナの広い範囲を扱うことができます (can handle a wide range of extended katakana)
+
+そして (and)
+
+3. ローマ字表記は、修正ヘボン式に似ています、そして拡張カタカナの広い範囲を扱うことができます。
+
+This extension converts all Japanese katakana in the web pages you visit into rōmaji (i.e. the Latin alphabet).
+
+Katakana is commonly used in Japanese to write English loan words. Enabling this extension will make these English words (mostly) easy to decode.
+
+Hovering your mouse pointer over the generated rōmaji will display the original katakana.
+
+The romanization is close to revised Hepburn, and can handle a wide range of extended katakana.
+
+This extension requires full access to all the web pages you visit. This is only used to perform the conversion. No data is transmitted - the conversion happens entirely in your browser. You can disable this extension at any time in the Extensions tab. In private browsing mode (i.e. "incognito"), it will be disabled by default.
+
+This extension has full access to all the web pages you visit. This is used exclusively for performing the conversions. No data is transmitted - the conversion happens entirely in your browser. You can disable this extension at any time in the Extensions tab. In private browsing mode (i.e. secret mode), it will be disabled by default.
+
+4. この拡張機能は、あなたが訪問するすべてのWebページへのフルアクセスを持っています。これは、変換を行うためにのみ使用されます。データは送信されません - 変換はブラウザで完全に起こります。あなたは[拡張機能]タブ内の任意の時点でこの拡張機能を無効にすることができます。シークレットモードでは、デフォルトでは無効になります。
+
+This extension, it has a full access to all of the Web pages you visit. This is used only in order to perform the conversion. Data is not sent - conversion will occur entirely in the browser. You can disable this extension at any point in the Extensions tab. In the secret mode, the default is disabled.
+
+----
+
+

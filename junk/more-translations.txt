@@ -1,0 +1,29 @@
+Katakana 2 Romaji / カタカナからローマ字
+Converts Japanese katakana into rōmaji. / カタカナからローマ字へ変換します。
+
+for Firefox
+プライベート private
+
+モード mode
+
+ブラウジング browsing
+
+
+
+This extension converts all Japanese katakana in the web pages you visit into rōmaji - i.e. the Latin alphabet.
+
+Katakana is commonly used in Japanese to write English loan words. Enabling this extension will make these English words easy to decipher.
+
+Hovering your mouse pointer over the generated rōmaji will display the original katakana.
+
+The romanization is close to revised Hepburn, and can handle a wide range of extended katakana.
+
+This extension requires full access to all the web pages you visit. This is only used to perform the conversion. No data is transmitted - the conversion happens entirely in your browser. You can disable this extension at any time in the Add-ons tab. In private browsing mode, it will be disabled by default.
+
+このアドオンはあなたが訪問するすべてのウェブページのカタカナをローマ字へ変換します。
+
+生成されたローマ字の上にマウスポインタをホバリング、元のカタカナが表示されます。
+
+ローマ字表記は、修正ヘボン式に似ています、そして拡張カタカナの広い範囲を扱うことができます。
+
+このアドオンは、あなたが訪問するすべてのWebページへのフルアクセスを持っています。これは、変換を行うためにのみ使用されます。データは送信されません - 変換はブラウザで完全に起こります。あなたは[アドオン]タブ内の任意の時点でこのアドオンを無効にすることができます。プライベートモードでは、デフォルトでは無効になります。

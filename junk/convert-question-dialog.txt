@@ -1,0 +1,15 @@
+page popup
+
+"Katakana has been detected on this page. Do you want to convert it into rōmaji?"
+
+Button: Convert
+Checkbox: Always convert katakana on DOMAIN
+Button: Advanced
+
+"Katakana has been converted into rōmaji."
+"Katakana was detected and automatically converted into rōmaji."
+
+Button: Undo
+Checkbox: Always convert katakana on DOMAIN
+Button: Advanced
+
