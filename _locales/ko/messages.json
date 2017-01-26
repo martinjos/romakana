@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "카타카나를 로마자로",
+        "description": "App name"
+    },
+    "appDesc": {
+        "message": "카타카나를 로마자로 변환합니다.",
+        "description": "App description"
+    }
+}
